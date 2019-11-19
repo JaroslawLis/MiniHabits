@@ -23,7 +23,7 @@
 
   $database = db_connect();
   Habit::set_database($database);
-  $res = Habit::find_all();
- // var_dump($res);
+  //$res = Habit::find_all();
+  //var_dump($res);
 
 ?>
