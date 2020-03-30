@@ -54,18 +54,40 @@ class Habit {
     return $object;
   }
 
+  public function create() {
+    $sql = "INSERT INTO habits (";
+    $sql .="habit, starting_date";
+    $sql .=") VALUES (";
+    $sql .="'" .$this->habit. "',";
+    $sql .="'" .$this->starting_date. "'";
+    $sql .=")";
+
+    $result = self::$database->query($sql);
+    if($result) {
+      $this->id = self::$database->insert_id;
+    }
+
+
+
+    return $result;
+  }
+
+
   // ----- END OF ACTIVE RECORD CODE ------
 
   public $id;
   public $habit;
-  public $start_date;
+  public $starting_date;
 
 
   public function __construct($args=[]) {
-
+    $this->habit = $args['habit'] ?? '';
+    $this->starting_date = $args['starting_date'] ?? '';
   }
 
-
+  public function name() {
+    return "{this->name}";
+  }
 
 }
 
